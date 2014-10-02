@@ -1,0 +1,28 @@
+SMRG\GeoserverBundle\Entity\Track:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        rating:
+            type: integer
+        gpxfile:
+            type: string
+            length: 255
+        attributes:
+            type: json_array
+    manyToOne:
+        project:
+            targetEntity: Project
+            inversedBy: tracks
+            joinColumn:
+                name: project_id
+                referencedColumnName: id        
+    lifecycleCallbacks: {  }

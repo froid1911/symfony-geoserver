@@ -1,0 +1,28 @@
+smrg_geoserver_homepage:
+    path:     /
+    defaults: { _controller: SMRGGeoserverBundle:Default:index }
+
+api_get_projects:
+    path:     /api/getProjects
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getProjects }
+
+api_get_project:
+    path:     /api/getProject/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getProject, _format: ~ }
+    requirements:
+        _method: GET
+        id: "\d+"
+
+api_new_projects:
+    path:     /api/newProject
+    defaults: { _controller: SMRGGeoserverBundle:Rest:newProject }
+    requirements:
+            _method: POST
+
+api_get_routes:
+    path:     /getRoutes
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getRoutes }
+
+api_get_events:
+    path:     /getEvents
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getEvents }

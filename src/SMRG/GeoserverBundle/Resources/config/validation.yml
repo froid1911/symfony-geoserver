@@ -1,0 +1,4 @@
+SMRG\GeoserverBundle\Entity\Project:
+    getters:
+        name:
+            - NotBlank:

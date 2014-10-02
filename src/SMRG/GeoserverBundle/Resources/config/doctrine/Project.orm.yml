@@ -1,0 +1,19 @@
+SMRG\GeoserverBundle\Entity\Project:
+    type: entity
+    table: null
+    repositoryClass: SMRG\GeoserverBundle\Entity\ProjectRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    oneToMany:
+        tracks:
+            targetEntity: Track
+            mappedBy: project
+    lifecycleCallbacks: {  }
