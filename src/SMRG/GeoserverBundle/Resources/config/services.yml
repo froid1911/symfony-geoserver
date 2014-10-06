@@ -1,4 +1,21 @@
 services:
-#    smrg_geoserver.example:
-#        class: SMRG\GeoserverBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    sonata.admin.project:
+        class: SMRG\GeoserverBundle\Admin\ProjectAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Content", label: "Project" }
+        arguments:
+            - ~
+            - SMRG\GeoserverBundle\Entity\Project
+            - ~
+        calls:
+            - [ setTranslationDomain, [SMRGGeoserverBundle]]
+
+    smrg_geoserver.admin.track:
+        class: SMRG\GeoserverBundle\Admin\TrackAdmin
+        arguments: [~, SMRG\GeoserverBundle\Entity\Track, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Content, label: Track}
+        arguments:
+                    - ~
+                    - SMRG\GeoserverBundle\Entity\Track
+                    - ~

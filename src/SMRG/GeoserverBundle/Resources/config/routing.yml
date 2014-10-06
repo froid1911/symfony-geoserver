@@ -1,6 +1,12 @@
+smrg_geoserver_project:
+    resource: "@SMRGGeoserverBundle/Resources/config/routing/project.yml"
+    prefix:   /project
+
 smrg_geoserver_homepage:
     path:     /
     defaults: { _controller: SMRGGeoserverBundle:Default:index }
+
+
 
 api_get_projects:
     path:     /api/getProjects
@@ -13,16 +19,60 @@ api_get_project:
         _method: GET
         id: "\d+"
 
-api_new_projects:
+api_get_geo_json:
+    path:     /api/getGeoJson
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getGeoJson, _format: ~ }
+
+api_new_project:
     path:     /api/newProject
     defaults: { _controller: SMRGGeoserverBundle:Rest:newProject }
     requirements:
             _method: POST
 
-api_get_routes:
-    path:     /getRoutes
-    defaults: { _controller: SMRGGeoserverBundle:Rest:getRoutes }
+api_get_tracks:
+    path:     /api/getTracks
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getTracks }
+
+api_get_track:
+    path:     /api/getTrack/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getTrack, _format: ~ }
+    requirements:
+        _method: GET
+        id: "\d+"
+
+api_new_track:
+    path:     /api/newTrack
+    defaults: { _controller: SMRGGeoserverBundle:Rest:newTrack }
+    requirements:
+            _method: POST
 
 api_get_events:
     path:     /getEvents
     defaults: { _controller: SMRGGeoserverBundle:Rest:getEvents }
+
+form_project_zip_new:
+    path:     /projectzip/new
+    defaults: { _controller: SMRGGeoserverBundle:Projectzip:new }
+
+form_project_zip_decompress:
+    path:     /projectzip/decompress
+    defaults: { _controller: SMRGGeoserverBundle:Projectzip:decompress }
+
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+smrg_user_tab:
+    path:     /user/login
+    defaults: { _controller: SMRGGeoserverBundle:Default:user }
+
+

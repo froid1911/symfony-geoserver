@@ -20,7 +20,9 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "friendsofsymfony/rest-bundle": "1.4.*",
         "jms/serializer-bundle": "~0.13",
-        "sonata-project/admin-bundle": "2.3.0"
+        "sonata-project/admin-bundle": "2.3.0",
+        "friendsofsymfony/user-bundle": "2.0.x-dev",
+        "sonata-project/doctrine-orm-admin-bundle": "2.3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

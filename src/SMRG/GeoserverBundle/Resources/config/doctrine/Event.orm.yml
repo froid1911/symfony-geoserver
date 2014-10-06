@@ -8,10 +8,27 @@ SMRG\GeoserverBundle\Entity\Event:
             generator:
                 strategy: AUTO
     fields:
-        name:
-            type: string
-            length: 255
-        icon:
-            type: string
-            length: 255
+        latitude:
+            type: float
+            length: 10
+        longitude:
+            type: float
+            length: 10
+        description:
+            type: text
+    manyToOne:
+        track:
+            targetEntity: Track
+            inversedBy: events
+            joinColumn:
+                name: track_id
+                referencedColumnName: id
+    manyToOne:
+        eventcategory:
+            targetEntity: EventCategory
+            inversedBy: events
+            joinColumn:
+                name: eventcategory_id
+                referencedColumnName: id
+
     lifecycleCallbacks: {  }

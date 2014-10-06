@@ -76,9 +76,24 @@ fos_rest:
         formats:
             rss: false
             xml: true
+            json: true
         templating_formats:
             html: true
         force_redirects:
             html: true
         failed_validation: HTTP_BAD_REQUEST
     body_listener: true
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: SMRG\GeoserverBundle\Entity\User
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # Enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+#            contexts:   [admin]
+        # Your other blocks
+
+sonata_admin:
+    title:                Geoserver Admin

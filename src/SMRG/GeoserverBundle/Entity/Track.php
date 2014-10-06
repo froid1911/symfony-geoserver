@@ -3,6 +3,7 @@
 namespace SMRG\GeoserverBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Track
@@ -34,15 +35,30 @@ class Track
      */
     private $attributes;
 
+    private $file;
+    /**
+     * @var \SMRG\GeoserverBundle\Entity\Project
+     */
+    private $project;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -59,13 +75,13 @@ class Track
     }
 
     /**
-     * Get name
+     * Get rating
      *
-     * @return string 
+     * @return integer 
      */
-    public function getName()
+    public function getRating()
     {
-        return $this->name;
+        return $this->rating;
     }
 
     /**
@@ -81,16 +97,6 @@ class Track
         return $this;
     }
 
-    /**
-     * Get rating
-     *
-     * @return integer 
-     */
-    public function getRating()
-    {
-        return $this->rating;
-    }
-    
     public function getGpxfile()
     {
       return $this->gpxfile;
@@ -99,7 +105,17 @@ class Track
     public function setGpxfile($gpxfile)
     {
       $this->gpxfile = $gpxfile;
-    }    
+    }
+
+    /**
+     * Get attributes
+     *
+     * @return array
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
 
     /**
      * Set attributes
@@ -115,19 +131,14 @@ class Track
     }
 
     /**
-     * Get attributes
+     * Get project
      *
-     * @return array 
+     * @return \SMRG\GeoserverBundle\Entity\Project
      */
-    public function getAttributes()
+    public function getProject()
     {
-        return $this->attributes;
+        return $this->project;
     }
-    /**
-     * @var \SMRG\GeoserverBundle\Entity\Project
-     */
-    private $project;
-
 
     /**
      * Set project
@@ -142,13 +153,72 @@ class Track
         return $this;
     }
 
-    /**
-     * Get project
-     *
-     * @return \SMRG\GeoserverBundle\Entity\Project 
-     */
-    public function getProject()
+    public function getAbsolutePath()
     {
-        return $this->project;
+        return null === $this->gpxfile
+            ? null
+            : $this->getUploadRootDir() . '/' . $this->gpxfile;
     }
+
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        return 'uploads/tracks';
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->gpxfile
+            ? null
+            : $this->getUploadDir() . '/' . $this->gpxfile;
+    }
+
+    public function upload()
+    {
+        // the file property can be empty if the field is not required
+        if (null === $this->getFile()) {
+            return;
+        }
+
+        // use the original file name here but you should
+        // sanitize it at least to avoid any security issues
+
+        // move takes the target directory and then the
+        // target filename to move to
+        $this->getFile()->move(
+            $this->getUploadRootDir(),
+            $this->getFile()->getClientOriginalName()
+        );
+
+        // set the path property to the filename where you've saved the file
+        $this->gpxfile = $this->getFile()->getClientOriginalName();
+
+        // clean up the file property as you won't need it anymore
+        $this->file = null;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile(UploadedFile $file = null)
+    {
+        $this->file = $file;
+    }
+
+
+
+
+
+
+
+
 }

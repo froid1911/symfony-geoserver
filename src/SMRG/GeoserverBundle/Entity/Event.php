@@ -13,22 +13,34 @@ class Event
      * @var integer
      */
     private $id;
-
+    /**
+     * @var \SMRG\GeoserverBundle\Entity\Track
+     */
+    private $track;
+    /**
+     * @var float
+     */
+    private $latitude;
+    /**
+     * @var float
+     */
+    private $longitude;
     /**
      * @var string
      */
-    private $name;
+    private $description;
 
     /**
-     * @var string
+     * Constructor
      */
-    private $icon;
-
+    public function __construct()
+    {
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -36,48 +48,94 @@ class Event
     }
 
     /**
-     * Set name
+     * Get track
      *
-     * @param string $name
+     * @return \SMRG\GeoserverBundle\Entity\Track
+     */
+    public function getTrack()
+    {
+        return $this->track;
+    }
+
+    /**
+     * Set track
+     *
+     * @param \SMRG\GeoserverBundle\Entity\Track $track
      * @return Event
      */
-    public function setName($name)
+    public function setTrack(\SMRG\GeoserverBundle\Entity\Track $track = null)
     {
-        $this->name = $name;
+        $this->track = $track;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get latitude
      *
-     * @return string 
+     * @return float
      */
-    public function getName()
+    public function getLatitude()
     {
-        return $this->name;
+        return $this->latitude;
     }
 
     /**
-     * Set icon
+     * Set latitude
      *
-     * @param string $icon
+     * @param float $latitude
      * @return Event
      */
-    public function setIcon($icon)
+    public function setLatitude($latitude)
     {
-        $this->icon = $icon;
+        $this->latitude = $latitude;
 
         return $this;
     }
 
     /**
-     * Get icon
+     * Get longitude
      *
-     * @return string 
+     * @return float
      */
-    public function getIcon()
+    public function getLongitude()
     {
-        return $this->icon;
+        return $this->longitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param float $longitude
+     * @return Event
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Event
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }

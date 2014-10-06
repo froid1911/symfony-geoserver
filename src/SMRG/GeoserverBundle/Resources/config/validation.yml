@@ -2,3 +2,11 @@ SMRG\GeoserverBundle\Entity\Project:
     getters:
         name:
             - NotBlank:
+
+SMRG\GeoserverBundle\Entity\Track:
+    getters:
+        name:
+            - NotBlank:
+        file:
+            - File:
+                maxSize: 6000000

@@ -1,1 +1,70 @@
 {% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
+    <link rel="stylesheet" href="{{ asset('bundles/smrggeoserver/css/geoserver.css') }}"/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script>
+
+        var map = L.map('map', {
+            track_id: 'b88d6f9e-da27-467d-a135-71095b33057e',
+            sa_id: 'Big Data With a Leaflet',
+            center: [51.545877, 9.922783],
+            zoom: 10
+        });
+
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.tileLayer('http://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png').addTo(map);
+
+
+        function onEachFeature(feature, layer) {
+            var popupContent = "<h3>" + feature.properties.name + "</h3>";
+
+            if (feature.properties && feature.properties.popup_content) {
+                popupContent += "<p>" + feature.properties.popup_content + "</p>";
+            }
+
+            layer.bindPopup(popupContent);
+        }
+
+
+        var myStyle = {
+            "color": "#ff7800",
+            "weight": 5,
+            "opacity": 0.65
+        };
+
+        colors = ['FF0000', 'FFA200', 'FFFB00', '91FF00', '00FF00'];
+
+        $.getJSON("{{ path('api_get_geo_json') }}", function (data) {
+            $.each(data, function (key, feature) {
+
+                myStyle.color = '#' + colors[feature.rating - 1];
+                L.geoJson(feature, {
+                    style: myStyle,
+                    onEachFeature: onEachFeature
+                }).addTo(map);
+
+
+            });
+        })
+
+
+    </script>
+{% endblock %}
+
+{% block body %}
+    <div id="content">
+        <div id="map"></div>
+        <div id="modal" class="reveal-modal" data-reveal></div>
+    </div>
+
+{% endblock %}

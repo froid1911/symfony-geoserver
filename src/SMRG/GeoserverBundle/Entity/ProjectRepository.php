@@ -16,10 +16,15 @@ class ProjectRepository extends EntityRepository
     public function getWithRelated($id)
     {
         $builder = $this->createQueryBuilder('p');
-        $builder->leftJoin('SMRGGeoserverBundle:Track', 't');
+        //$builder->leftJoin('SMRGGeoserverBundle:Track', 't');
         $builder->where('p.id = :id');
         $builder->setParameter('id', $id);
-        return $builder->getQuery()->getOneOrNullResult();
+        $results = $builder->getQuery()->getResult();
+        if (count($results) == 1) {
+            return $results[0];
+        }
+
+        return null;
 
     }
 

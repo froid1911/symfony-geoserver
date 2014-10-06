@@ -1,0 +1,17 @@
+<ul class="tabs" data-tab role="tablist">
+    <li class="tab-title active" role="presentational"><a href="#panel2-1" role="tab" tabindex="0" aria-selected="true"
+                                                          controls="panel2-1">Register</a></li>
+    <li class="tab-title" role="presentational"><a href="#panel2-2" role="tab" tabindex="0" aria-selected="false"
+                                                   controls="panel2-2">Login</a></li>
+</ul>
+<div class="tabs-content">
+    <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
+        {{ render(controller('FOSUserBundle:Registration:register')) }}
+    </section>
+    <section role="tabpanel" aria-hidden="true" class="content" id="panel2-2">
+        {{ render(controller('FOSUserBundle:Security:login')) }}
+    </section>
+</div>
+<script type="text/javascript">
+    $(document).foundation();
+</script>

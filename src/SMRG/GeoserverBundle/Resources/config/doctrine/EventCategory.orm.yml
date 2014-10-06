@@ -1,0 +1,17 @@
+SMRG\GeoserverBundle\Entity\EventCategory:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        icon:
+            type: string
+            length: 30
+    lifecycleCallbacks: {  }

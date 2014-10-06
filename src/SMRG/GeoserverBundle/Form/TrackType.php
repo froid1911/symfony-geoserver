@@ -17,7 +17,7 @@ class TrackType extends AbstractType
         $builder
             ->add('name')
             ->add('rating')
-            ->add('gpxfile')
+            ->add('file')
             ->add('attributes')
             ->add('project')
         ;

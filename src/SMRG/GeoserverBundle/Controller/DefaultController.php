@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('SMRGGeoserverBundle:Default:index.html.twig', array('name' => "blabla"));
     }
+
+    public function userAction()
+    {
+        return $this->render('SMRGGeoserverBundle:Default:user.html.twig');
+    }
 }
