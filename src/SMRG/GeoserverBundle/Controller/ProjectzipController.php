@@ -31,23 +31,6 @@ class ProjectzipController extends Controller
         $form = $this->createForm(new ProjectzipType());
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-//            var_dump($form->getData());
-        }
-
-//
-//        /* @var FileBag $files */
-//        $files = $this->get('request')->files;
-//
-//        /* @var UploadedFile $file */
-//        $file = $files->all()['smrg_geoserverbundle_projectzip']['file'];
-//
-//        // Move to ZIP Dir
-////        $file->move();
-//
-//        // Decompress
-//        // Read XML
-//        // create Project with tracks and events
 
 
     }
