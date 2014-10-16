@@ -1,14 +1,20 @@
 smrg_geoserver_project:
     resource: "@SMRGGeoserverBundle/Resources/config/routing/project.yml"
     prefix:   /project
+    requirements:
+            _method: GET
 
 smrg_geoserver_homepage:
     path:     /
     defaults: { _controller: SMRGGeoserverBundle:Default:index }
+    requirements:
+            _method: GET
 
 api_get_geo_json:
     path:     /api/getGeoJson
     defaults: { _controller: SMRGGeoserverBundle:Rest:getGeoJson, _format: ~ }
+    requirements:
+        _method: GET
 
 
 api_project_list:
@@ -181,10 +187,14 @@ api_eventcategory_delete:
 form_project_zip_new:
     path:     /projectzip/new
     defaults: { _controller: SMRGGeoserverBundle:Projectzip:new }
+    requirements:
+            _method: POST
 
 form_project_zip_decompress:
     path:     /projectzip/decompress
     defaults: { _controller: SMRGGeoserverBundle:Projectzip:decompress }
+    requirements:
+            _method: POST
 
 
 fos_user:
@@ -202,6 +212,8 @@ _sonata_admin:
 smrg_user_tab:
     path:     /user/login
     defaults: { _controller: SMRGGeoserverBundle:Default:user }
+    requirements:
+            _method: GET
 
 gallery:
     resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
