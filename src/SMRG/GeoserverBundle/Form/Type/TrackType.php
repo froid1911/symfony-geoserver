@@ -1,12 +1,12 @@
 <?php
 
-namespace SMRG\GeoserverBundle\Form;
+namespace SMRG\GeoserverBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EventCategoryType extends AbstractType
+class TrackType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,20 +16,23 @@ class EventCategoryType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('icon');
+            ->add('rating')
+//            ->add('gpxfile')
+            ->add('file', 'file')
+            ->add('attributes')
+            ->add('project')
+        ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(
-            array(
-                'data_class' => 'SMRG\GeoserverBundle\Entity\EventCategory',
+        $resolver->setDefaults(array(
+                'data_class' => 'SMRG\GeoserverBundle\Entity\Track',
                 'csrf_protection' => false
-            )
-        );
+        ));
     }
 
     /**
@@ -37,6 +40,6 @@ class EventCategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'eventcategory';
+        return 'track';
     }
 }

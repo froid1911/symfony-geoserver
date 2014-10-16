@@ -1,12 +1,12 @@
 <?php
 
-namespace SMRG\GeoserverBundle\Form;
+namespace SMRG\GeoserverBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class EventType extends AbstractType
+class ProjectzipType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,11 +15,7 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('latitude')
-            ->add('longitude')
-            ->add('description')
-            ->add('category')
-            ->add('track');
+            ->add('file', 'file');
     }
 
     /**
@@ -27,12 +23,10 @@ class EventType extends AbstractType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(
-            array(
-                'data_class' => 'SMRG\GeoserverBundle\Entity\Event',
-                'csrf_protection' => false
-            )
-        );
+        $resolver->setDefaults(array(
+            'data_class' => 'SMRG\GeoserverBundle\Entity\Project',
+            'csrf_protection' => true
+        ));
     }
 
     /**
@@ -40,6 +34,6 @@ class EventType extends AbstractType
      */
     public function getName()
     {
-        return 'event';
+        return 'smrg_geoserverbundle_projectzip';
     }
 }

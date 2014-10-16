@@ -1,12 +1,12 @@
 <?php
 
-namespace SMRG\GeoserverBundle\Form;
+namespace SMRG\GeoserverBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProjectzipType extends AbstractType
+class ProjectType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,11 @@ class ProjectzipType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', 'file');
+            ->add('name')
+            ->add('tracks', 'collection', array('type' => new TrackType()))
+        ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -25,7 +27,7 @@ class ProjectzipType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'SMRG\GeoserverBundle\Entity\Project',
-            'csrf_protection' => true
+            'csrf_protection' => false
         ));
     }
 
@@ -34,6 +36,6 @@ class ProjectzipType extends AbstractType
      */
     public function getName()
     {
-        return 'smrg_geoserverbundle_projectzip';
+        return 'project';
     }
 }

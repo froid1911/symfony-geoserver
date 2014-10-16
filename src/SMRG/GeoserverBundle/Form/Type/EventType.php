@@ -1,12 +1,12 @@
 <?php
 
-namespace SMRG\GeoserverBundle\Form;
+namespace SMRG\GeoserverBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TrackPictureType extends AbstractType
+class EventType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,10 @@ class TrackPictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('latitude')
+            ->add('longitude')
             ->add('description')
-            ->add('file', 'file')
+            ->add('category')
             ->add('track');
     }
 
@@ -28,7 +29,7 @@ class TrackPictureType extends AbstractType
     {
         $resolver->setDefaults(
             array(
-                'data_class' => 'SMRG\GeoserverBundle\Entity\TrackPicture',
+                'data_class' => 'SMRG\GeoserverBundle\Entity\Event',
                 'csrf_protection' => false
             )
         );
@@ -39,6 +40,6 @@ class TrackPictureType extends AbstractType
      */
     public function getName()
     {
-        return 'smrg_geoserverbundle_trackpicture';
+        return 'event';
     }
 }
