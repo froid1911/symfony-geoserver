@@ -17,6 +17,7 @@ use SMRG\GeoserverBundle\Form\Type\TrackType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 class RestController extends FOSRestController
 {
