@@ -59,21 +59,9 @@ class Track
         $this->attributes = array();
     }
 
-    /**
-     * @param mixed $file
-     */
     public function hasFile()
     {
         return isset($this->file) ? true : false;
-    }
-
-    /**
-     * @param mixed $file
-     */
-    public function isFile($file)
-    {
-        return true;
-
     }
 
     public function addFile($file)
