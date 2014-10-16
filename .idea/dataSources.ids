@@ -13,8 +13,11 @@
       <column name="latitude" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
       <column name="longitude" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
       <column name="description" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1"/>
+      <column name="category_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="FK_FA6F25A312469DE2" columns="category_id" ref-table="EventCategory" ref-schema="" ref-catalog="geoserver" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FK_FA6F25A35ED23C43" columns="track_id" ref-table="Track" ref-schema="" ref-catalog="geoserver" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="IDX_FA6F25A312469DE2" unique="false" columns="category_id"/>
       <index name="IDX_FA6F25A35ED23C43" unique="false" columns="track_id"/>
     </table>
     <table name="EventCategory" schema="" catalog="geoserver" type="TABLE">
@@ -22,6 +25,7 @@
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="icon" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="FK_FA6F25A312469DE2" table="Event" schema="" catalog="geoserver" columns="category_id"/>
     </table>
     <table name="Project" schema="" catalog="geoserver" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -31,11 +35,11 @@
     </table>
     <table name="Track" schema="" catalog="geoserver" type="TABLE">
       <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="rating" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="gpxfile" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="attributes" sqlType="LONGTEXT" precision="2147483647" scale="0" nullable="false" jdbcType="-1" remarks="KERDMlR5cGU6anNvbl9hcnJheSk="/>
-      <column name="project_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="gpxfile" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="id"/>
       <foreign-key name="FK_1722D7A2166D1F9C" columns="project_id" ref-table="Project" ref-schema="" ref-catalog="geoserver" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="FK_FA6F25A35ED23C43" table="Event" schema="" catalog="geoserver" columns="track_id"/>

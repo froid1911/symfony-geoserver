@@ -18,16 +18,37 @@ class Project
      * @var string
      */
     private $name;
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tracks;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tracks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 
     /**
@@ -41,28 +62,6 @@ class Project
         $this->name = $name;
 
         return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-    /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $tracks;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tracks = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -96,5 +95,10 @@ class Project
     public function getTracks()
     {
         return $this->tracks;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -31,20 +31,22 @@ class Event
     private $description;
 
     /**
+     * @var
+     */
+    /**
+     * @var \SMRG\GeoserverBundle\Entity\EventCategory
+     */
+    private $category;
+    /**
+     * @var \SMRG\GeoserverBundle\Entity\Track
+     */
+    private $tracks;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -135,6 +137,67 @@ class Event
     public function setDescription($description)
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \SMRG\GeoserverBundle\Entity\EventCategory
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \SMRG\GeoserverBundle\Entity\EventCategory $category
+     * @return Event
+     */
+    public function setCategory(\SMRG\GeoserverBundle\Entity\EventCategory $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getId();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get tracks
+     *
+     * @return \SMRG\GeoserverBundle\Entity\Track
+     */
+    public function getTracks()
+    {
+        return $this->tracks;
+    }
+
+    /**
+     * Set tracks
+     *
+     * @param \SMRG\GeoserverBundle\Entity\Track $tracks
+     * @return Event
+     */
+    public function setTracks(\SMRG\GeoserverBundle\Entity\Track $tracks = null)
+    {
+        $this->tracks = $tracks;
 
         return $this;
     }

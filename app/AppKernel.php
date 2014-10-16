@@ -22,8 +22,14 @@ class AppKernel extends Kernel
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Sonata\CoreBundle\SonataCoreBundle(),
             new \Sonata\BlockBundle\SonataBlockBundle(),
+            new \Sonata\EasyExtendsBundle\SonataEasyExtendsBundle(),
+            new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new \Sonata\IntlBundle\SonataIntlBundle(),
+            new \Sonata\MediaBundle\SonataMediaBundle(),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
             new Sonata\AdminBundle\SonataAdminBundle(),
+            new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
+            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
             new SMRG\GeoserverBundle\SMRGGeoserverBundle(),
         );

@@ -27,6 +27,10 @@ class EventCategory
      * @var \Doctrine\Common\Collections\Collection
      */
     private $events;
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $categoryevents;
 
     /**
      * Constructor
@@ -44,29 +48,6 @@ class EventCategory
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return EventCategory
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
     }
 
     /**
@@ -123,5 +104,66 @@ class EventCategory
     public function getEvents()
     {
         return $this->events;
+    }
+
+    /**
+     * Add categoryevents
+     *
+     * @param \SMRG\GeoserverBundle\Entity\Event $categoryevents
+     * @return EventCategory
+     */
+    public function addCategoryevent(\SMRG\GeoserverBundle\Entity\Event $categoryevents)
+    {
+        $this->categoryevents[] = $categoryevents;
+
+        return $this;
+    }
+
+    /**
+     * Remove categoryevents
+     *
+     * @param \SMRG\GeoserverBundle\Entity\Event $categoryevents
+     */
+    public function removeCategoryevent(\SMRG\GeoserverBundle\Entity\Event $categoryevents)
+    {
+        $this->categoryevents->removeElement($categoryevents);
+    }
+
+    /**
+     * Get categoryevents
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCategoryevents()
+    {
+        return $this->categoryevents;
+    }
+
+    public function __toString()
+    {
+        return $this->getName();
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return EventCategory
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
     }
 }

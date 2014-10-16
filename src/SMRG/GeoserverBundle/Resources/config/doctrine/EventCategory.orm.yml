@@ -14,4 +14,8 @@ SMRG\GeoserverBundle\Entity\EventCategory:
         icon:
             type: string
             length: 30
+    oneToMany:
+        events:
+            targetEntity: SMRG\GeoserverBundle\Entity\Event
+            mappedBy: category
     lifecycleCallbacks: {  }

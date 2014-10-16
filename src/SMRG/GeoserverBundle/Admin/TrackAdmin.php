@@ -10,13 +10,30 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class TrackAdmin extends Admin
 {
+    public function prePersist($image)
+    {
+        $this->manageFileUpload($image);
+    }
+
+    private function manageFileUpload($image)
+    {
+        if ($image->getFile()) {
+            $image->refreshUpdated();
+        }
+    }
+
+    public function preUpdate($image)
+    {
+        $this->manageFileUpload($image);
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id')
+            ->add('project')
             ->add('name')
             ->add('rating')
             ->add('gpxfile')
@@ -29,7 +46,7 @@ class TrackAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->add('id')
+            ->add('project')
             ->add('name')
             ->add('rating')
             ->add('gpxfile')
@@ -49,7 +66,7 @@ class TrackAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('id')
+            ->add('project', 'sonata_type_model', array('property' => 'name'))
             ->add('name')
             ->add('rating')
             ->add('gpxfile')
@@ -62,7 +79,7 @@ class TrackAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
-            ->add('id')
+            ->add('project')
             ->add('name')
             ->add('rating')
             ->add('gpxfile')

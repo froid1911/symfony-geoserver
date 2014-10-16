@@ -13,16 +13,26 @@ SMRG\GeoserverBundle\Entity\Track:
             length: 255
         rating:
             type: integer
+            nullable: true
         gpxfile:
             type: string
-            length: 255
+            length: 100
         attributes:
             type: json_array
+            nullable: true
     manyToOne:
         project:
             targetEntity: Project
             inversedBy: tracks
             joinColumn:
                 name: project_id
-                referencedColumnName: id        
-    lifecycleCallbacks: {  }
+                referencedColumnName: id
+    oneToMany:
+        events:
+            targetEntity: SMRG\GeoserverBundle\Entity\Event
+            mappedBy: tracks
+            inversedBy: events
+        pictures:
+            targetEntity: SMRG\GeoserverBundle\Entity\TrackPicture
+            mappedBy: track
+            inversedBy: pictures

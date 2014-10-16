@@ -6,49 +6,177 @@ smrg_geoserver_homepage:
     path:     /
     defaults: { _controller: SMRGGeoserverBundle:Default:index }
 
+api_get_geo_json:
+    path:     /api/getGeoJson
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getGeoJson, _format: ~ }
 
 
-api_get_projects:
-    path:     /api/getProjects
+api_project_list:
+    path:     /api/project/list
     defaults: { _controller: SMRGGeoserverBundle:Rest:getProjects }
+    requirements:
+        _method: GET
 
-api_get_project:
-    path:     /api/getProject/{id}
+
+api_project_create:
+    path:     /api/project
+    defaults: { _controller: SMRGGeoserverBundle:Rest:newProject }
+    requirements:
+            _method: POST
+
+api_project_get:
+    path:     /api/project/{id}
     defaults: { _controller: SMRGGeoserverBundle:Rest:getProject, _format: ~ }
     requirements:
         _method: GET
         id: "\d+"
 
-api_get_geo_json:
-    path:     /api/getGeoJson
-    defaults: { _controller: SMRGGeoserverBundle:Rest:getGeoJson, _format: ~ }
+api_project_update:
+    path:     /api/project/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:updateProject, _format: ~ }
+    requirements:
+        _method: PUT
+        id: "\d+"
 
-api_new_project:
-    path:     /api/newProject
-    defaults: { _controller: SMRGGeoserverBundle:Rest:newProject }
+api_project_delete:
+    path:     /api/project/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:deleteProject, _format: ~ }
+    requirements:
+        _method: DELETE
+        id: "\d+"
+
+api_trackpicture_delete:
+    path:     /api/trackpicture/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:deleteTrackpicture, _format: ~ }
+    requirements:
+        _method: DELETE
+        id: "\d+"
+api_trackpicture_list:
+    path:     /api/trackpicture/list
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getTrackpictures }
+    requirements:
+        _method: GET
+
+
+api_trackpicture_create:
+    path:     /api/trackpicture
+    defaults: { _controller: SMRGGeoserverBundle:Rest:newTrackpicture }
     requirements:
             _method: POST
 
-api_get_tracks:
-    path:     /api/getTracks
-    defaults: { _controller: SMRGGeoserverBundle:Rest:getTracks }
+api_trackpicture_get:
+    path:     /api/trackpicture/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getTrackpicture, _format: ~ }
+    requirements:
+        _method: GET
+        id: "\d+"
 
-api_get_track:
-    path:     /api/getTrack/{id}
+api_trackpicture_update:
+    path:     /api/trackpicture/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:updateTrackPicture, _format: ~ }
+    requirements:
+        _method: PUT
+        id: "\d+"
+
+api_track_list:
+    path:     /api/track/list
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getTracks }
+    requirements:
+        _method: GET
+
+api_track_getk:
+    path:     /api/track/{id}
     defaults: { _controller: SMRGGeoserverBundle:Rest:getTrack, _format: ~ }
     requirements:
         _method: GET
         id: "\d+"
 
-api_new_track:
-    path:     /api/newTrack
+api_track_create:
+    path:     /api/track
     defaults: { _controller: SMRGGeoserverBundle:Rest:newTrack }
     requirements:
             _method: POST
 
-api_get_events:
-    path:     /getEvents
+api_track_update:
+    path:     /api/track/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:updateTrack, _format: ~ }
+    requirements:
+        _method: PUT
+        id: "\d+"
+
+api_track_delete:
+    path:     /api/track/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:deleteTrack, _format: ~ }
+    requirements:
+        _method: DELETE
+        id: "\d+"
+
+api_event_get:
+    path:     /api/event/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getEvent }
+    requirements:
+            _method: GET
+            id: "\d+"
+
+api_event_list:
+    path:     /api/event/list
     defaults: { _controller: SMRGGeoserverBundle:Rest:getEvents }
+    requirements:
+        _method: GET
+
+api_event_create:
+    path:     /api/event
+    defaults: { _controller: SMRGGeoserverBundle:Rest:newEvent }
+    requirements:
+            _method: POST
+
+api_event_update:
+    path:     /api/event/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:updateEvent, _format: ~ }
+    requirements:
+        _method: PUT
+        id: "\d+"
+
+api_event_delete:
+    path:     /api/event/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:deleteEvent, _format: ~ }
+    requirements:
+        _method: DELETE
+        id: "\d+"
+
+api_eventcategory_get:
+    path:     /api/eventcategory/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getEventcategory }
+    requirements:
+            _method: GET
+            id: "\d+"
+
+api_eventcategory_list:
+    path:     /api/eventcategory/list
+    defaults: { _controller: SMRGGeoserverBundle:Rest:getEventcategories }
+    requirements:
+        _method: GET
+
+api_eventcategory_create:
+    path:     /api/eventcategory
+    defaults: { _controller: SMRGGeoserverBundle:Rest:newEventcategory }
+    requirements:
+            _method: POST
+
+api_eventcategory_update:
+    path:     /api/eventcategory/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:updateEventcategory, _format: ~ }
+    requirements:
+        _method: PUT
+        id: "\d+"
+
+api_eventcategory_delete:
+    path:     /api/eventcategory/{id}
+    defaults: { _controller: SMRGGeoserverBundle:Rest:deleteEventcategory, _format: ~ }
+    requirements:
+        _method: DELETE
+        id: "\d+"
+
 
 form_project_zip_new:
     path:     /projectzip/new
@@ -75,4 +203,11 @@ smrg_user_tab:
     path:     /user/login
     defaults: { _controller: SMRGGeoserverBundle:Default:user }
 
+gallery:
+    resource: '@SonataMediaBundle/Resources/config/routing/gallery.xml'
+    prefix: /media/gallery
+
+media:
+    resource: '@SonataMediaBundle/Resources/config/routing/media.xml'
+    prefix: /media
 

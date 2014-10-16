@@ -16,19 +16,21 @@ SMRG\GeoserverBundle\Entity\Event:
             length: 10
         description:
             type: text
+            nullable: true
+
     manyToOne:
-        track:
-            targetEntity: Track
+        category:
+            targetEntity: SMRG\GeoserverBundle\Entity\EventCategory
             inversedBy: events
             joinColumn:
-                name: track_id
+                name: category_id
                 referencedColumnName: id
-    manyToOne:
-        eventcategory:
-            targetEntity: EventCategory
-            inversedBy: events
-            joinColumn:
-                name: eventcategory_id
-                referencedColumnName: id
+        tracks:
+           targetEntity: SMRG\GeoserverBundle\Entity\Track
+           inversedBy: events
+           joinColumn:
+               name: track_id
+               referencedColumnName: id
+
 
     lifecycleCallbacks: {  }

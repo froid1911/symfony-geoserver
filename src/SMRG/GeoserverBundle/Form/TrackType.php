@@ -17,7 +17,8 @@ class TrackType extends AbstractType
         $builder
             ->add('name')
             ->add('rating')
-            ->add('file')
+//            ->add('gpxfile')
+            ->add('file', 'file')
             ->add('attributes')
             ->add('project')
         ;
@@ -29,7 +30,8 @@ class TrackType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'SMRG\GeoserverBundle\Entity\Track'
+                'data_class' => 'SMRG\GeoserverBundle\Entity\Track',
+                'csrf_protection' => false
         ));
     }
 
@@ -38,6 +40,6 @@ class TrackType extends AbstractType
      */
     public function getName()
     {
-        return 'smrg_geoserverbundle_track';
+        return 'track';
     }
 }

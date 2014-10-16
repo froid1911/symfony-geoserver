@@ -1,0 +1,28 @@
+SMRG\GeoserverBundle\Entity\TrackPicture:
+    type: entity
+    table: null
+    repositoryClass: SMRG\GeoserverBundle\Entity\TrackPictureRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: string
+            length: 255
+        path:
+            type: string
+            length: 255
+    manyToOne:
+        track:
+            targetEntity: SMRG\GeoserverBundle\Entity\Track
+            inversedBy: pictures
+            joinColumn:
+                name: track_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -36,6 +36,6 @@ class ProjectType extends AbstractType
      */
     public function getName()
     {
-        return 'smrg_geoserverbundle_project';
+        return 'project';
     }
 }
