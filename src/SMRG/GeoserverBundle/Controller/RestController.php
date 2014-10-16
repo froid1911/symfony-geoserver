@@ -699,7 +699,6 @@ class RestController extends FOSRestController
                     continue;
                 }
 
-                /* @TODO: correct Path */
                 $xml = simplexml_load_file(__DIR__ . '/../../../../web/uploads/tracks/' . $track->getGpxFile());
                 $content = $this->getTrackContent($track);
                 $linestring = new GeoJSONLineString(array());

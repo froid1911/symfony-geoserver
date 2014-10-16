@@ -24,7 +24,7 @@ class ProjectzipController extends Controller
     public function decompressAction()
     {
 
-        /* @TODO: decompress Zip File */
+
         /* @var Request $request */
         $request = $this->get('request');
 
