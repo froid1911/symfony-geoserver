@@ -81,7 +81,7 @@ class Track
         move_uploaded_file($file, '/var/www/');
     }
 
-    public function removeFile($file)
+    public function removeFile()
     {
         $this->file = null;
     }
@@ -161,7 +161,7 @@ class Track
 
     public function removeAttribute($key)
     {
-        if (array_key_exists($this->attributes[$key])) {
+        if (array_key_exists($key, $this->attributes)) {
             unset($this->attributes[$key]);
         }
 
